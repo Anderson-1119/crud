@@ -33,19 +33,23 @@ namespace cadastrodeclientes
             this.lblTitulo = new System.Windows.Forms.Label();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tbCadastro = new System.Windows.Forms.TabPage();
-            this.tbConsulta = new System.Windows.Forms.TabPage();
-            this.lblNomeCompleto = new System.Windows.Forms.Label();
-            this.txtNomeCompleto = new System.Windows.Forms.TextBox();
-            this.lblNomeSocial = new System.Windows.Forms.Label();
-            this.txtNomeSocial = new System.Windows.Forms.TextBox();
-            this.lblEmail = new System.Windows.Forms.Label();
-            this.txtEmail = new System.Windows.Forms.TextBox();
-            this.lblCPF = new System.Windows.Forms.Label();
             this.txtCPF = new System.Windows.Forms.MaskedTextBox();
+            this.lblCPF = new System.Windows.Forms.Label();
+            this.txtEmail = new System.Windows.Forms.TextBox();
+            this.lblEmail = new System.Windows.Forms.Label();
+            this.txtNomeSocial = new System.Windows.Forms.TextBox();
+            this.lblNomeSocial = new System.Windows.Forms.Label();
+            this.txtNomeCompleto = new System.Windows.Forms.TextBox();
+            this.lblNomeCompleto = new System.Windows.Forms.Label();
+            this.tbConsulta = new System.Windows.Forms.TabPage();
             this.btnSalvar = new System.Windows.Forms.Button();
+            this.txtBuscar = new System.Windows.Forms.TextBox();
+            this.btnPesquisar = new System.Windows.Forms.Button();
+            this.lstCliente = new System.Windows.Forms.ListView();
             this.panelTopo.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tbCadastro.SuspendLayout();
+            this.tbConsulta.SuspendLayout();
             this.SuspendLayout();
             // 
             // panelTopo
@@ -55,7 +59,7 @@ namespace cadastrodeclientes
             this.panelTopo.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelTopo.Location = new System.Drawing.Point(0, 0);
             this.panelTopo.Name = "panelTopo";
-            this.panelTopo.Size = new System.Drawing.Size(800, 100);
+            this.panelTopo.Size = new System.Drawing.Size(850, 100);
             this.panelTopo.TabIndex = 0;
             // 
             // lblTitulo
@@ -98,66 +102,13 @@ namespace cadastrodeclientes
             this.tbCadastro.Text = "Dados de Clientes";
             this.tbCadastro.UseVisualStyleBackColor = true;
             // 
-            // tbConsulta
+            // txtCPF
             // 
-            this.tbConsulta.Location = new System.Drawing.Point(4, 29);
-            this.tbConsulta.Name = "tbConsulta";
-            this.tbConsulta.Padding = new System.Windows.Forms.Padding(3);
-            this.tbConsulta.Size = new System.Drawing.Size(768, 261);
-            this.tbConsulta.TabIndex = 1;
-            this.tbConsulta.Text = "Consulta";
-            this.tbConsulta.UseVisualStyleBackColor = true;
-            // 
-            // lblNomeCompleto
-            // 
-            this.lblNomeCompleto.AutoSize = true;
-            this.lblNomeCompleto.ForeColor = System.Drawing.SystemColors.Highlight;
-            this.lblNomeCompleto.Location = new System.Drawing.Point(17, 31);
-            this.lblNomeCompleto.Name = "lblNomeCompleto";
-            this.lblNomeCompleto.Size = new System.Drawing.Size(123, 20);
-            this.lblNomeCompleto.TabIndex = 0;
-            this.lblNomeCompleto.Text = "Nome Completo";
-            // 
-            // txtNomeCompleto
-            // 
-            this.txtNomeCompleto.Location = new System.Drawing.Point(171, 28);
-            this.txtNomeCompleto.Name = "txtNomeCompleto";
-            this.txtNomeCompleto.Size = new System.Drawing.Size(394, 26);
-            this.txtNomeCompleto.TabIndex = 1;
-            // 
-            // lblNomeSocial
-            // 
-            this.lblNomeSocial.AutoSize = true;
-            this.lblNomeSocial.ForeColor = System.Drawing.SystemColors.Highlight;
-            this.lblNomeSocial.Location = new System.Drawing.Point(17, 72);
-            this.lblNomeSocial.Name = "lblNomeSocial";
-            this.lblNomeSocial.Size = new System.Drawing.Size(98, 20);
-            this.lblNomeSocial.TabIndex = 2;
-            this.lblNomeSocial.Text = "Nome Social";
-            // 
-            // txtNomeSocial
-            // 
-            this.txtNomeSocial.Location = new System.Drawing.Point(171, 69);
-            this.txtNomeSocial.Name = "txtNomeSocial";
-            this.txtNomeSocial.Size = new System.Drawing.Size(394, 26);
-            this.txtNomeSocial.TabIndex = 3;
-            // 
-            // lblEmail
-            // 
-            this.lblEmail.AutoSize = true;
-            this.lblEmail.ForeColor = System.Drawing.SystemColors.Highlight;
-            this.lblEmail.Location = new System.Drawing.Point(17, 113);
-            this.lblEmail.Name = "lblEmail";
-            this.lblEmail.Size = new System.Drawing.Size(53, 20);
-            this.lblEmail.TabIndex = 4;
-            this.lblEmail.Text = "E-mail";
-            // 
-            // txtEmail
-            // 
-            this.txtEmail.Location = new System.Drawing.Point(171, 110);
-            this.txtEmail.Name = "txtEmail";
-            this.txtEmail.Size = new System.Drawing.Size(394, 26);
-            this.txtEmail.TabIndex = 5;
+            this.txtCPF.Location = new System.Drawing.Point(171, 151);
+            this.txtCPF.Mask = "###,###,###-##";
+            this.txtCPF.Name = "txtCPF";
+            this.txtCPF.Size = new System.Drawing.Size(125, 26);
+            this.txtCPF.TabIndex = 7;
             // 
             // lblCPF
             // 
@@ -169,20 +120,76 @@ namespace cadastrodeclientes
             this.lblCPF.TabIndex = 6;
             this.lblCPF.Text = "CPF";
             // 
-            // txtCPF
+            // txtEmail
             // 
-            this.txtCPF.Location = new System.Drawing.Point(171, 151);
-            this.txtCPF.Mask = "###,###,###-##";
-            this.txtCPF.Name = "txtCPF";
-            this.txtCPF.Size = new System.Drawing.Size(125, 26);
-            this.txtCPF.TabIndex = 7;
+            this.txtEmail.Location = new System.Drawing.Point(171, 110);
+            this.txtEmail.Name = "txtEmail";
+            this.txtEmail.Size = new System.Drawing.Size(394, 26);
+            this.txtEmail.TabIndex = 5;
+            // 
+            // lblEmail
+            // 
+            this.lblEmail.AutoSize = true;
+            this.lblEmail.ForeColor = System.Drawing.SystemColors.Highlight;
+            this.lblEmail.Location = new System.Drawing.Point(17, 113);
+            this.lblEmail.Name = "lblEmail";
+            this.lblEmail.Size = new System.Drawing.Size(53, 20);
+            this.lblEmail.TabIndex = 4;
+            this.lblEmail.Text = "E-mail";
+            // 
+            // txtNomeSocial
+            // 
+            this.txtNomeSocial.Location = new System.Drawing.Point(171, 69);
+            this.txtNomeSocial.Name = "txtNomeSocial";
+            this.txtNomeSocial.Size = new System.Drawing.Size(394, 26);
+            this.txtNomeSocial.TabIndex = 3;
+            // 
+            // lblNomeSocial
+            // 
+            this.lblNomeSocial.AutoSize = true;
+            this.lblNomeSocial.ForeColor = System.Drawing.SystemColors.Highlight;
+            this.lblNomeSocial.Location = new System.Drawing.Point(17, 72);
+            this.lblNomeSocial.Name = "lblNomeSocial";
+            this.lblNomeSocial.Size = new System.Drawing.Size(98, 20);
+            this.lblNomeSocial.TabIndex = 2;
+            this.lblNomeSocial.Text = "Nome Social";
+            // 
+            // txtNomeCompleto
+            // 
+            this.txtNomeCompleto.Location = new System.Drawing.Point(171, 28);
+            this.txtNomeCompleto.Name = "txtNomeCompleto";
+            this.txtNomeCompleto.Size = new System.Drawing.Size(394, 26);
+            this.txtNomeCompleto.TabIndex = 1;
+            // 
+            // lblNomeCompleto
+            // 
+            this.lblNomeCompleto.AutoSize = true;
+            this.lblNomeCompleto.ForeColor = System.Drawing.SystemColors.Highlight;
+            this.lblNomeCompleto.Location = new System.Drawing.Point(17, 31);
+            this.lblNomeCompleto.Name = "lblNomeCompleto";
+            this.lblNomeCompleto.Size = new System.Drawing.Size(123, 20);
+            this.lblNomeCompleto.TabIndex = 0;
+            this.lblNomeCompleto.Text = "Nome Completo";
+            // 
+            // tbConsulta
+            // 
+            this.tbConsulta.Controls.Add(this.lstCliente);
+            this.tbConsulta.Controls.Add(this.btnPesquisar);
+            this.tbConsulta.Controls.Add(this.txtBuscar);
+            this.tbConsulta.Location = new System.Drawing.Point(4, 29);
+            this.tbConsulta.Name = "tbConsulta";
+            this.tbConsulta.Padding = new System.Windows.Forms.Padding(3);
+            this.tbConsulta.Size = new System.Drawing.Size(768, 236);
+            this.tbConsulta.TabIndex = 1;
+            this.tbConsulta.Text = "Consulta";
+            this.tbConsulta.UseVisualStyleBackColor = true;
             // 
             // btnSalvar
             // 
             this.btnSalvar.BackColor = System.Drawing.SystemColors.Highlight;
             this.btnSalvar.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnSalvar.ForeColor = System.Drawing.Color.White;
-            this.btnSalvar.Location = new System.Drawing.Point(16, 391);
+            this.btnSalvar.Location = new System.Drawing.Point(16, 394);
             this.btnSalvar.Name = "btnSalvar";
             this.btnSalvar.Size = new System.Drawing.Size(115, 47);
             this.btnSalvar.TabIndex = 2;
@@ -190,11 +197,39 @@ namespace cadastrodeclientes
             this.btnSalvar.UseVisualStyleBackColor = false;
             this.btnSalvar.Click += new System.EventHandler(this.btnSalvar_Click);
             // 
+            // txtBuscar
+            // 
+            this.txtBuscar.Location = new System.Drawing.Point(15, 19);
+            this.txtBuscar.Name = "txtBuscar";
+            this.txtBuscar.Size = new System.Drawing.Size(253, 26);
+            this.txtBuscar.TabIndex = 0;
+            // 
+            // btnPesquisar
+            // 
+            this.btnPesquisar.BackColor = System.Drawing.Color.DarkMagenta;
+            this.btnPesquisar.ForeColor = System.Drawing.Color.White;
+            this.btnPesquisar.Location = new System.Drawing.Point(312, 15);
+            this.btnPesquisar.Name = "btnPesquisar";
+            this.btnPesquisar.Size = new System.Drawing.Size(132, 35);
+            this.btnPesquisar.TabIndex = 1;
+            this.btnPesquisar.Text = "Pesquisar";
+            this.btnPesquisar.UseVisualStyleBackColor = false;
+            this.btnPesquisar.Click += new System.EventHandler(this.btnPesquisar_Click);
+            // 
+            // lstCliente
+            // 
+            this.lstCliente.HideSelection = false;
+            this.lstCliente.Location = new System.Drawing.Point(6, 56);
+            this.lstCliente.Name = "lstCliente";
+            this.lstCliente.Size = new System.Drawing.Size(756, 174);
+            this.lstCliente.TabIndex = 2;
+            this.lstCliente.UseCompatibleStateImageBehavior = false;
+            // 
             // frmcadastrodeclientes
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(850, 473);
             this.Controls.Add(this.btnSalvar);
             this.Controls.Add(this.tabControl1);
             this.Controls.Add(this.panelTopo);
@@ -205,6 +240,8 @@ namespace cadastrodeclientes
             this.tabControl1.ResumeLayout(false);
             this.tbCadastro.ResumeLayout(false);
             this.tbCadastro.PerformLayout();
+            this.tbConsulta.ResumeLayout(false);
+            this.tbConsulta.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -225,6 +262,9 @@ namespace cadastrodeclientes
         private System.Windows.Forms.Label lblNomeCompleto;
         private System.Windows.Forms.TabPage tbConsulta;
         private System.Windows.Forms.Button btnSalvar;
+        private System.Windows.Forms.ListView lstCliente;
+        private System.Windows.Forms.Button btnPesquisar;
+        private System.Windows.Forms.TextBox txtBuscar;
     }
 }
 
