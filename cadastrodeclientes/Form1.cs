@@ -115,6 +115,7 @@ namespace cadastrodeclientes
             string query = "SELECT * FROM dadosdecliente ORDER BY codigo DESC";
             carregar_clientes_com_query(query);
         }
+
         //validação regex
         private bool isValidEmail(string email)
         {
@@ -302,6 +303,70 @@ namespace cadastrodeclientes
             txtCPF.Text = "";
 
             txtNomeCompleto.Focus();
+        }
+
+        private void toolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            excluir_cliente();
+        }
+
+        private void btnExcluirCliente_Click(object sender, EventArgs e)
+        {
+            excluir_cliente();
+        }
+
+        private void excluir_cliente()
+        {
+            {
+                try
+                {
+                    DialogResult opcaoDigitada = MessageBox.Show("tem certeza que deseja excluir o codigo de registro? " + codigo_cliente,
+                      "tem certeza? ", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+
+                    if (opcaoDigitada == DialogResult.Yes)
+                    {
+                        conexao = new MySqlConnection(data_source);
+                        conexao.Open();
+                        MySqlCommand cmd = new MySqlCommand();
+                        cmd.Connection = conexao;
+                        cmd.Prepare();
+                        cmd.CommandText = "DELETE FROM dadosdecliente WHERE codigo = @codigo";
+                        cmd.Parameters.AddWithValue("@codigo", codigo_cliente);
+                        cmd.ExecuteNonQuery();
+
+                        //excluir no bancodedados
+                        MessageBox.Show("os dados do cliente foram excluidos!", "sucesso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    }
+                }
+                catch (MySqlException ex)
+                {
+                    //Trata erros relacionados ao MySQL 
+                    MessageBox.Show("Erro" + ex.Number + "ocorreu:" + ex.Message,
+                    "Erro",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Error);
+                }
+
+                catch (Exception ex)
+                {
+                    //trata outros tipos de erro
+                    MessageBox.Show("ocorreu: " + ex.Message,
+                        "Erro",
+                        MessageBoxButtons.OK,
+                        MessageBoxIcon.Error);
+                }
+                finally
+                {
+                    //Garante que a conexão com o banco será fechada, mesmo se ocorrer erro 
+                    if (conexao != null && conexao.State == ConnectionState.Open)
+                    {
+                        conexao.Close();
+                        // MessageBox.Show("conexão fechada com sucesso");  teste
+                    }
+                }
+                MessageBox.Show("excluir codigo " + codigo_cliente);
+            }
+
         }
     }
 }
